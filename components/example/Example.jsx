@@ -105,6 +105,12 @@ class Example extends React.Component {
         <div className="motto-update">
           <p>{this.state.name}</p>
           <p>{this.state.motto}</p>
+          <input
+            type="text"
+            value={this.state.motto}
+            onChange={this.handleChangeMotto}
+          />
+          <button onClick={this.handleUpdateMotto}>Update Motto</button>
         </div>
 
         <p>
