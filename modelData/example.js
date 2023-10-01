@@ -1,4 +1,5 @@
 "use strict";
+import React, { Component } from 'react';
 
 /*
  * Load the model data for Project 4, Problem 1. We load into DOM the
@@ -19,3 +20,13 @@ models.exampleModel = function () {
     name: "Stack Minds",
   };
 };
+
+class Example extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Stack Minds',
+      motto: 'Group of students working on the SSDI project which will result in achieving expertise in various technologies,
+    };
+  }
+}
