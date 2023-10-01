@@ -32,3 +32,9 @@ you use won't conflict with these names.
 .code-name {
   font-family: Courier New, monospace;
 }
+
+.motto-update {
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+}
