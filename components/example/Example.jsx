@@ -116,7 +116,6 @@ class Example extends React.Component {
     return (
       <div className="container Example">
         <h1>Project 4 React.js Example</h1>
-
         <div className="motto-update">
           {/* Your problem #1 motto displaying and updating widget goes here */}
           <p style={{ color: 'blue', fontSize: '16px', fontWeight: 'bold', margin: '10px 0' }}> Name : {this.state.name}</p>
@@ -129,7 +128,7 @@ class Example extends React.Component {
     Change Motto:
     <input
       type="text"
-      placeholder={this.state.motto}
+      placeholder={"Enter new motto"}
       value={this.state.value}
       onChange={this.handleChangeForm}
       style={{ 
