@@ -15,36 +15,38 @@ class States extends Component {
 
   render() {
     const { searchTerm } = this.state;
-    const stateNames = models.states(); // Retrieve state names from models.states()
+    const stateNames = models.states();
 
     const filteredStates = stateNames.filter((state) =>
       state.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
-      <div>
-        <h1>States View</h1>
-        <input
-          type="text"
-          placeholder="Enter a substring..."
-          value={searchTerm}
-          onChange={this.handleSearchChange}
-        />
-        {searchTerm && (
-          <div>
-            <p>Filtering by: {searchTerm}</p>
-          </div>
-        )}
-        <ul>
-          {filteredStates.length > 0 ? (
-            filteredStates.map((state) => (
-              <li key={state}>{state}</li>
-            ))
-          ) : (
-            <p>No matching states found.</p>
+        <div className="states-container">
+          <br/><br/><br/>
+          <h1 className="states-heading">States View</h1>
+          <input
+            className="states-input"
+            type="text"
+            placeholder="Enter a substring..."
+            value={searchTerm}
+            onChange={this.handleSearchChange}
+          />
+          {searchTerm && (
+            <div className="states-filter-info">
+              <p>Filtering by: {searchTerm}</p>
+            </div>
           )}
-        </ul>
-      </div>
+          <ul className="states-list">
+            {filteredStates.length > 0 ? (
+              filteredStates.map((state) => (
+                <li key={state} className="states-list-item">{state}</li>
+              ))
+            ) : (
+              <p className="states-no-match">No matching states found.</p>
+            )}
+          </ul>
+        </div>
     );
   }
 }
