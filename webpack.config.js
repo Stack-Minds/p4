@@ -1,37 +1,48 @@
+const path = require('path');
+
 module.exports = {
   entry: {
     gettingStarted: "./gettingStarted.jsx",
     p2: "./p2.jsx",
+    p4: "./p4.jsx",
+    p5: "./p5.jsx",
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ["babel-loader"],
+        test: /\.(jpg|jpeg|png)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+          }
+        }
       },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                    },
+        },
       },
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"],
+    extensions: [".js", ".jsx"],
   },
+  devServer: {
+    contentBase: './',
+    watchContentBase: true,
+},
   output: {
-    path: `${__dirname}/compiled`,
+    path: path.resolve(__dirname, 'compiled'),
     publicPath: "/",
     filename: "[name].bundle.js",
   },
