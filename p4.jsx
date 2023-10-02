@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import States from './components/states/States';
-import Example from './components/example/Example'
-import Header from './components/header/Header';
+import Example from './components/example/Example';
+import Header from './components/Header/Header';
 
 class Eg extends Component {
     render() {
