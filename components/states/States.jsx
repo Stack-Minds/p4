@@ -15,7 +15,32 @@ class States extends React.Component {
   render() {
     return (
       <div>
-        Replace this with the code for Project 4, Problem 2
+  
+
+	<h1>Project States View</h1>
+
+	<h3> 
+		List of all states in alphabetical order
+	</h3>
+	<p>
+		{{states}}
+	</p>
+
+	<h3>
+		List of all states containing a substring
+	</h3>
+	<p>
+		Enter a substring, and the view will display in alphabetical order a list of all states
+		whose names contain the given substring (ignoring differences in case).
+	</p>
+	<label class="states-input">Please enter a substring: <input type="text"
+        ng-model="substring"></label>
+    <button ng-click="filterStates(substring)">Filter!</button>
+    <p>
+    	<span ng-if="match">List of all states after filtering: {{statesAfterFilter}}</span>
+    	<span ng-if="noMatch">No matching states found.</span>
+    </p>
+
       </div>
     );
   }
