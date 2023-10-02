@@ -16,10 +16,11 @@
 
 	    <script src="components/header/headerController.js"></script>
 	    <link rel="stylesheet" type="text/css" href="components/header/header.css" />
-	    <script src="modelData/header.js"></script>
+	    <script src="modelData/header.js">
+	    </script>
 
 	    <script src="node_modules/angular-route/angular-route.min.js"></script>
-  	</head>
+	</head>
   <body>
   		<button ng-click="switchView(viewName)">Switch to {{viewName}}</button>
 	  	<div ng-include="'components/header/headerTemplate.html'" ng-controller="HeaderController"></div> 
