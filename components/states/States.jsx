@@ -1,46 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './States.css';
 
-/**
- * Define States, a React component of Project 4, Problem 2. The model
- * data for this view (the state names) is available at
- * window.models.states.
- */
-class States extends React.Component {
+class States extends Component {
   constructor(props) {
     super(props);
-    console.log('window.models.states', window.models.states);
+    this.state = {
+      searchTerm: '',
+    };
   }
 
+  handleSearchChange = (e) => {
+    this.setState({ searchTerm: e.target.value });
+  };
+
   render() {
+    const { searchTerm } = this.state;
+    const stateNames = models.states(); // Retrieve state names from models.states()
+
+    const filteredStates = stateNames.filter((state) =>
+      state.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
       <div>
-  
-
-	<h1>Project States View</h1>
-
-	<h3> 
-		List of all states in alphabetical order
-	</h3>
-	<p>
-		{{states}}
-	</p>
-
-	<h3>
-		List of all states containing a substring
-	</h3>
-	<p>
-		Enter a substring, and the view will display in alphabetical order a list of all states
-		whose names contain the given substring (ignoring differences in case).
-	</p>
-	<label class="states-input">Please enter a substring: <input type="text"
-        ng-model="substring"></label>
-    <button ng-click="filterStates(substring)">Filter!</button>
-    <p>
-    	<span ng-if="match">List of all states after filtering: {{statesAfterFilter}}</span>
-    	<span ng-if="noMatch">No matching states found.</span>
-    </p>
-
+        <h1>States View</h1>
+        <input
+          type="text"
+          placeholder="Enter a substring..."
+          value={searchTerm}
+          onChange={this.handleSearchChange}
+        />
+        {searchTerm && (
+          <div>
+            <p>Filtering by: {searchTerm}</p>
+          </div>
+        )}
+        <ul>
+          {filteredStates.length > 0 ? (
+            filteredStates.map((state) => (
+              <li key={state}>{state}</li>
+            ))
+          ) : (
+            <p>No matching states found.</p>
+          )}
+        </ul>
       </div>
     );
   }
